@@ -1,0 +1,57 @@
+{
+  "label": "QR Code",
+  "name": "qr-code",
+  "apiVersion": "v1",
+  "internal": false,
+  "configurationType": "GLOBAL",
+  "deployment": {
+    "profiles": [
+      {
+        "name": "default",
+        "label": "Default",
+        "memory": 256,
+        "description": "Default configuration"
+      }
+    ],
+    "allowMultipleInstances": true
+  },
+  "icon48": "https://storage.googleapis.com/static.slingrs.io/platform/endpoints/qr-code.png",
+  "configurationHelpUrl": "/endpoints_qrCode.html",
+  "status": "ACTIVE",
+  "stores": [],
+  "events": [
+    {
+      "label": "QR Response",
+      "name": "qrResponse"
+    }
+  ],
+  "functions": [
+    {
+      "label": "Generate QR Code",
+      "name": "_generateQRCode",
+      "callbacks": [
+        {
+          "name": "qrResponse",
+          "maxWaitingTime": 120000,
+          "maxExpectedResponses": 1
+        }
+      ]
+    },
+    {
+      "label": "Parse QR Code",
+      "name": "_parseQRCode",
+      "callbacks": [
+        {
+          "name": "qrResponse",
+          "maxWaitingTime": 120000,
+          "maxExpectedResponses": 1
+        }
+      ]
+    }
+  ],
+  "scripts": [
+    "functions.js"
+  ],
+  "listeners": [],
+  "configuration": []
+}
